@@ -52,3 +52,36 @@ body::-webkit-scrollbar-thumb:hover {
   padding: 0;
   list-style-type: none;
 }
+
+.header__search-overlay,
+.quick-view-modal-overlay,
+.size-table-overlay,
+.auth-overlay,
+.share-overlay {
+  background: #16181b;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+}
+
+.header__search-overlay.overlay-active,
+.quick-view-modal-overlay.overlay-active,
+.size-table-overlay.overlay-active,
+.auth-overlay.overlay-active,
+.share-overlay.overlay-active {
+  opacity: 0.6;
+  visibility: visible;
+}
+
+.header__search-overlay.overlay-active {
+  z-index: 101;
+}
+
+.share-overlay.overlay-active {
+  z-index: 101;
+}

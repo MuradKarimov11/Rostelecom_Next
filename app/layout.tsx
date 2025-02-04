@@ -1,12 +1,15 @@
+import Layout from "@/components/layouts/Layout";
 import type { Metadata } from "next";
+
 import "bootstrap/dist/css/bootstrap.css";
 import "./globalStyles/globals.css";
 import "./globalStyles/header.css";
 import "./globalStyles/menu.css";
 import "./globalStyles/mobile-navbar.css";
 import "./globalStyles/catalog-menu.css";
-
-import Layout from "@/components/layouts/Layout";
+import "./globalStyles/search-modal.css";
+import "./globalStyles/cart-popup.css";
+import "./globalStyles/footer.css";
 
 export const metadata: Metadata = {
   title: "Rostelecom",

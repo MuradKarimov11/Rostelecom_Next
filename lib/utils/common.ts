@@ -1,3 +1,5 @@
+import { closeSearchModal } from "@/context/modals";
+
 export const removeOverflowHiddenFromBody = () => {
   const body = document.querySelector("body") as HTMLBodyElement;
   body.classList.remove("overflow-hidden");
@@ -16,3 +18,11 @@ export const getWindowWidth = () => {
 
   return { windowWidth };
 };
+
+export const handleCloseSearchModal = () => {
+  closeSearchModal();
+  removeOverflowHiddenFromBody();
+};
+
+export const formatPrice = (x: number) =>
+  x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
