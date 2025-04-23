@@ -1,28 +1,44 @@
-import { closeSearchModal } from "@/context/modals";
+import { closeSearchModal } from '@/context/modals'
 
 export const removeOverflowHiddenFromBody = () => {
-  const body = document.querySelector("body") as HTMLBodyElement;
-  body.classList.remove("overflow-hidden");
-};
+  const body = document.querySelector('body') as HTMLBodyElement
+  body.classList.remove('overflow-hidden')
+}
 
-export const addOverflowHiddenToBody = (paddingRight = "") => {
-  const body = document.querySelector("body") as HTMLBodyElement;
-  body.classList.add("overflow-hidden");
+export const addOverflowHiddenToBody = (paddingRight = '') => {
+  const body = document.querySelector('body') as HTMLBodyElement
+  body.classList.add('overflow-hidden')
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  paddingRight && (body.style.paddingRight = paddingRight);
-};
+  paddingRight && (body.style.paddingRight = paddingRight)
+}
 
 export const getWindowWidth = () => {
   const { innerWidth: windowWidth } =
-    typeof window !== "undefined" ? window : { innerWidth: 0 };
+    typeof window !== 'undefined' ? window : { innerWidth: 0 }
 
-  return { windowWidth };
-};
+  return { windowWidth }
+}
 
 export const handleCloseSearchModal = () => {
-  closeSearchModal();
-  removeOverflowHiddenFromBody();
-};
+  closeSearchModal()
+  removeOverflowHiddenFromBody()
+}
+
+export const shuffle = <T>(array: T[]) => {
+  let currentIndex = array.length,
+    randomIndex
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--
+    ;[array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ]
+  }
+
+  return array
+}
 
 export const formatPrice = (x: number) =>
-  x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
