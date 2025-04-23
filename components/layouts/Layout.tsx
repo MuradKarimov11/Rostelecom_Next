@@ -1,19 +1,19 @@
-"use client";
-import React from "react";
-import Header from "../modules/Header/Header";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import MobileNavbar from "../modules/MobileNavbar/MobileNavbar";
-import { AnimatePresence } from "framer-motion";
-import SearchModal from "../modules/Header/SearchModal";
-import { motion } from "framer-motion";
-import { useUnit } from "effector-react";
-import { $SearchModal } from "@/context/modals";
-import { handleCloseSearchModal } from "@/lib/utils/common";
-import Footer from "../modules/Footer/Footer";
+'use client'
+
+import Header from '../modules/Header/Header'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import MobileNavbar from '../modules/MobileNavbar/MobileNavbar'
+import { AnimatePresence } from 'framer-motion'
+import SearchModal from '../modules/Header/SearchModal'
+import { motion } from 'framer-motion'
+import { useUnit } from 'effector-react'
+import { $SearchModal } from '@/context/modals'
+import { handleCloseSearchModal } from '@/lib/utils/common'
+import Footer from '../modules/Footer/Footer'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const isMedia800 = useMediaQuery(800);
-  const searchModal = useUnit($SearchModal);
+  const isMedia800 = useMediaQuery(800)
+  const searchModal = useUnit($SearchModal)
 
   return (
     <>
@@ -33,13 +33,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </AnimatePresence>
 
       <div
-        className={`header__search-overlay ${searchModal ? "overlay-active" : ""}`}
+        className={`header__search-overlay ${searchModal ? 'overlay-active' : ''}`}
         onClick={handleCloseSearchModal}
       />
 
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
