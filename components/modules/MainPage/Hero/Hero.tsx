@@ -43,7 +43,7 @@ function Hero() {
       </h1>
 
       <div className={`container ${styles.hero__container}`}>
-        <span className={styles.ad}>{translations[lang].common.ad}</span>
+        <span className={stylesForAd.ad}>{translations[lang].common.ad}</span>
         <Swiper
           className={styles.hero__slider}
           effect='coverflow'

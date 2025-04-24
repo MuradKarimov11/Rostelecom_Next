@@ -1,4 +1,5 @@
 import { closeSearchModal } from '@/context/modals'
+import { ICartItem } from '@/types/cart'
 
 export const removeOverflowHiddenFromBody = () => {
   const body = document.querySelector('body') as HTMLBodyElement
@@ -42,3 +43,6 @@ export const shuffle = <T>(array: T[]) => {
 
 export const formatPrice = (x: number) =>
   x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+
+export const isItemInList = (array: ICartItem[], productId: string) =>
+  array.some((item) => item.productId === productId)
