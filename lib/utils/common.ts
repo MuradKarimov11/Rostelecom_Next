@@ -1,4 +1,4 @@
-import { closeSearchModal } from '@/context/modals'
+import { closeSearchModal, closeSizeTable } from '@/context/modals'
 import { ICartItem } from '@/types/cart'
 
 export const removeOverflowHiddenFromBody = () => {
@@ -64,6 +64,14 @@ export const idGenerator = () => {
     S4() +
     S4()
   )
+}
+
+export const closeSizeTableByCheck = (showQuickViewModal: boolean) => {
+  if (!showQuickViewModal) {
+    removeOverflowHiddenFromBody()
+  }
+
+  closeSizeTable()
 }
 
 export const getCartItemCountBySize = (
