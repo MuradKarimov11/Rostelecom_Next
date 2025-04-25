@@ -27,6 +27,7 @@
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
     "react-slick": "^0.30.3",
     "sass": "^1.87.0",
     "sharp": "^0.34.1",

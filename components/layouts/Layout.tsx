@@ -7,13 +7,17 @@ import { AnimatePresence } from 'framer-motion'
 import SearchModal from '../modules/Header/SearchModal'
 import { motion } from 'framer-motion'
 import { useUnit } from 'effector-react'
-import { $SearchModal } from '@/context/modals'
+import { $searchModal, $showQuickViewModal } from '@/context/modals/state'
 import { handleCloseSearchModal } from '@/lib/utils/common'
 import Footer from '../modules/Footer/Footer'
+import QuickViewModal from '../modules/QuickViewModal/QuickViewModal'
+import { basePropsForMotion } from '@/constants/motion'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const searchModal = useUnit($searchModal)
+  const showQuickViewModal = useUnit($showQuickViewModal)
+
   const isMedia800 = useMediaQuery(800)
-  const searchModal = useUnit($SearchModal)
 
   return (
     <>
@@ -31,6 +35,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {!isMedia800 && (
+        <AnimatePresence>
+          {showQuickViewModal && (
+            <motion.div
+              {...basePropsForMotion}
+              initial={{ opacity: 0, zIndex: 6 }}
+            >
+              <QuickViewModal />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
 
       <div
         className={`header__search-overlay ${searchModal ? 'overlay-active' : ''}`}

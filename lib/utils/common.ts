@@ -46,3 +46,29 @@ export const formatPrice = (x: number) =>
 
 export const isItemInList = (array: ICartItem[], productId: string) =>
   array.some((item) => item.productId === productId)
+
+export const idGenerator = () => {
+  const S4 = () =>
+    (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+  return (
+    S4() +
+    S4() +
+    '-' +
+    S4() +
+    '-' +
+    S4() +
+    '-' +
+    S4() +
+    '-' +
+    S4() +
+    S4() +
+    S4()
+  )
+}
+
+export const getCartItemCountBySize = (
+  cartItems: ICartItem[],
+  currentSize: string
+) =>
+  cartItems.find((item) => item.size === currentSize.toLocaleLowerCase())
+    ?.count || 0
