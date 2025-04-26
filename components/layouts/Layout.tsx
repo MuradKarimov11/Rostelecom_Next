@@ -12,19 +12,36 @@ import {
   $showQuickViewModal,
   $showSizeTable,
 } from '@/context/modals/state'
-import { handleCloseSearchModal } from '@/lib/utils/common'
+import {
+  handleCloseAuthPopup,
+  handleCloseSearchModal,
+} from '@/lib/utils/common'
 import Footer from '../modules/Footer/Footer'
 import QuickViewModal from '../modules/QuickViewModal/QuickViewModal'
 import { basePropsForMotion } from '@/constants/motion'
 import SizeTable from '../modules/SizeTable/SizeTable'
-import { showSizeTable } from '@/context/modals'
+import AuthPopup from '../modules/AuthPopup/AuthPopup'
+import { $openAuthPopup } from '@/context/auth/state'
+import { useRef } from 'react'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const searchModal = useUnit($searchModal)
   const showQuickViewModal = useUnit($showQuickViewModal)
   const showSizeTable = useUnit($showSizeTable)
+  const openAuthPopup = useUnit($openAuthPopup)
+  const authWrapperRef = useRef<HTMLDivElement>(null)
 
   const isMedia800 = useMediaQuery(800)
+
+  const handleCloseAuthPopupByTarget = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    const target = e.target as Element
+
+    if (target === authWrapperRef.current) {
+      handleCloseAuthPopup()
+    }
+  }
 
   return (
     <>
@@ -32,6 +49,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {children}
       {isMedia800 && <MobileNavbar />}
       <AnimatePresence>
+        {openAuthPopup && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className='auth-popup-wrapper'
+            onClick={handleCloseAuthPopupByTarget}
+            ref={authWrapperRef}
+          >
+            <AuthPopup />
+          </motion.div>
+        )}
         {searchModal && (
           <motion.div
             initial={{ opacity: 0, zIndex: 102 }}
