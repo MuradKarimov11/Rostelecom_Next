@@ -8,19 +8,19 @@ import { withClickOutside } from '@/components/hocs/withClickOutside'
 import { useLang } from '@/hooks/useLang'
 import { IWrappedComponentProps } from '@/types/hocs'
 import CartPopupItem from './CartPopupItem'
-// import { useTotalPrice } from "@/hooks/useTotalPrice";
+import { useTotalPrice } from '@/hooks/useTotalPrice'
 import { formatPrice } from '@/lib/utils/common'
-// import { useGoodsByAuth } from "@/hooks/useGoodsByAuth";
-// import { getCartItemsFx } from "@/context/cart";
-// import { $cart, $cartFromLs } from "@/context/cart/state";
+import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
+import { getCartItemsFx } from '@/context/cart'
+import { $cart, $cartFromLs } from '@/context/cart/state'
 
 const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
   ({ open, setOpen }, ref) => {
     const { lang, translations } = useLang()
     const handleShowPopup = () => setOpen(true)
-    // const spinner = useUnit(getCartItemsFx.pending);
-    // const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs);
-    // const { animatedPrice } = useTotalPrice();
+    const spinner = useUnit(getCartItemsFx.pending)
+    const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs)
+    const { animatedPrice } = useTotalPrice()
 
     const handleHidePopup = () => setOpen(false)
 
