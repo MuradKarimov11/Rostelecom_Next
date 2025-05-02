@@ -12,6 +12,8 @@ import './globalStyles/cart-popup.css'
 import './globalStyles/footer.css'
 import './globalStyles/slick-theme.css'
 import './globalStyles/slick.css'
+import './globalStyles/cookie-popup'
+import './globalStyles/breadcrumbs.css'
 
 export const metadata: Metadata = {
   title: 'Rostelecom',
