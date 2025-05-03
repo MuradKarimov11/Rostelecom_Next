@@ -39,7 +39,7 @@ const OrderInfoBlock = ({
   const chosenCourierAddressData = useUnit($chosenCourierAddressData)
   const chosenPickupAddressData = useUnit($chosenPickupAddressData)
   const paymentSpinner = useUnit(makePaymentFx.pending)
-  const checkboxRef = useRef<HTMLInputElement>(null)
+  const checkboxRef = useRef() as MutableRefObject<HTMLInputElement>
   const priceWithDiscount = isCorrectPromotionalCode
     ? formatPrice(Math.round(animatedPrice - animatedPrice * 0.3))
     : formatPrice(animatedPrice)
@@ -56,10 +56,8 @@ const OrderInfoBlock = ({
   const handleTabCheckbox = (e: React.KeyboardEvent<HTMLLabelElement>) => {
     if (e.key == ' ' || e.code == 'Space') {
       e.preventDefault()
-      if (checkboxRef.current) {
-        setIsUserAgree(!checkboxRef.current.checked)
-        checkboxRef.current.checked = !checkboxRef.current.checked
-      }
+      setIsUserAgree(!checkboxRef.current.checked)
+      checkboxRef.current.checked = !checkboxRef.current.checked
     }
   }
 

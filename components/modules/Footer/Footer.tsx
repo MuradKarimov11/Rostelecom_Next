@@ -49,7 +49,6 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-
       <div className='footer__bottom'>
         <div className='container footer__bottom__container'>
           <div className='footer__copyright'>

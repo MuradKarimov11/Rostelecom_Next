@@ -14,7 +14,7 @@ import styles from '@/styles/main-page/index.module.scss'
 import stylesForAd from '@/styles/ad/index.module.scss'
 import productSubtitleStyles from '@/styles/productSubtitle/index.module.scss'
 
-function Hero() {
+const Hero = () => {
   const { lang, translations } = useLang()
 
   const slides = [
@@ -36,12 +36,12 @@ function Hero() {
   ]
 
   const handleSlideClick = (e: SwiperType) => e.slideTo(e.clickedIndex)
+
   return (
     <section className={styles.hero}>
       <h1 className='visually-hidden'>
         {translations[lang].main_page.hero_hidden_title}
       </h1>
-
       <div className={`container ${styles.hero__container}`}>
         <span className={stylesForAd.ad}>{translations[lang].common.ad}</span>
         <Swiper

@@ -19,13 +19,11 @@ const ProductItemActionBtn = ({
   const [tooltipLeft, setTooltipLeft] = useState(0)
   const showTooltip = () => setOpen(true)
   const hideTooltip = () => setOpen(false)
-  const tooltipRef = useRef<HTMLDivElement | null>(null)
+  const tooltipRef = useRef() as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
     if (open && withTooltip) {
-      if (tooltipRef.current) {
-        setTooltipLeft(tooltipRef.current.clientWidth)
-      }
+      setTooltipLeft(tooltipRef.current.clientWidth)
     }
   }, [open, withTooltip])
 
